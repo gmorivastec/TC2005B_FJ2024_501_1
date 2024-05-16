@@ -25,5 +25,25 @@ public class Proyectil : MonoBehaviour
             transform.up * _fuerza, // transform.right, transform.front
             ForceMode.Impulse
         );
+
+        // Destrucción de game objects / componentes
+        // cuando creamos dinámicamente objetos 
+        // lo correcto es tener estrategias para destruirlos
+        // opciones:
+        // - chocar con algún límite
+        // - destrucción por tiempo
+        // - destruir cuando se deje de ver 
+
+        // destrucción por tiempo
+        Destroy(gameObject, 3);
+    }
+
+    void OnCollisionEnter(Collision c)
+    {
+        // otra estrategia - destruir al choque 
+        if(c.gameObject.layer == 6)
+        {
+            Destroy(gameObject);
+        }
     }
 }
